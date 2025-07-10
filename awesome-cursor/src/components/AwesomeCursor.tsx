@@ -1,4 +1,3 @@
-import './AwesomeCursor.module.scss';
 import CursorAnimator from './CursorAnimator';
 import DynamicColor from './DynamicColor';
 import { GlobalProvider } from './GlobalProvider';

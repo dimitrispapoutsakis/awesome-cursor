@@ -26,7 +26,7 @@ export default defineConfig({
 			plugins: [
 				pluginModuleFederation(
 					{
-						name: 'awesome-cursor',
+						name: 'awesomecursor',
 						exposes: {
 							'.': './src/index.tsx',
 						},
