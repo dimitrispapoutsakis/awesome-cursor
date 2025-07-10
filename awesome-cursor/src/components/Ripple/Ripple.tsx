@@ -1,5 +1,6 @@
 import { isDarkEl } from '@utils/ui.util';
 import type { CSSProperties } from 'react';
+/* @ts-ignore */
 import rippleStyle from './Ripple.module.scss';
 
 interface IRipple {

@@ -9,7 +9,7 @@ export default defineConfig({
 			{
 				name: 'demo',
 				remotes: {
-					reactuploadform:
+					awesomecursor:
 						'awesomecursor@http://localhost:3001/mf/mf-manifest.json',
 				},
 				shared: {
