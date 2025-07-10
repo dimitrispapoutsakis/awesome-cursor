@@ -112,7 +112,7 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 				id="awesome-cursor"
 				style={{
 					position: 'fixed',
-					zIndex: 1000,
+					zIndex: 999999999,
 					willChange: 'transform',
 					pointerEvents: 'none',
 					transformOrigin: '50% 50% 0px',

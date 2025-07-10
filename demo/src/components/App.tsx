@@ -1,6 +1,8 @@
-import { AwesomeCursor } from 'awesomecursor';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AwesomeCursor } from 'awesomecursor';
+// import Sidebar from './Sidebar';
+import DynamicColorDemo from '../DynamicColorDemo';
 
 // Create dark theme
 const darkTheme = createTheme({
@@ -14,6 +16,8 @@ const App = () => {
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
 			<AwesomeCursor />
+			<DynamicColorDemo />
+			{/* <TextCursorDemo /> */}
 		</ThemeProvider>
 	);
 };
