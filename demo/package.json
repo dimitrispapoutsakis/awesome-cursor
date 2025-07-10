@@ -9,6 +9,8 @@
     "dev": "rsbuild dev --open",
     "format": "biome format --write",
     "preview": "rsbuild preview",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
     "prepare": "husky"
   },
   "dependencies": {
