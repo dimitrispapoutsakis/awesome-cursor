@@ -1,1 +1,1 @@
-export { Button } from './Button';
+export { default as AwesomeCursor } from './components/AwesomeCursor';

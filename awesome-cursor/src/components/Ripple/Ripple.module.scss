@@ -1,0 +1,30 @@
+.ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  background: var(--bg-color);
+  transform: translate(-50%, -50%);
+  padding: inherit;
+  pointer-events: none;
+  box-sizing: content-box;
+  opacity: 0;
+  animation: ripple-animation var(--animation-duration) ease-out;
+}
+
+@keyframes ripple-animation {
+  0% {
+    transform: scale3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale3d(3, 3, 3);
+    opacity: 0;
+  }
+}
