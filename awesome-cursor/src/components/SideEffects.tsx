@@ -28,21 +28,23 @@ const SideEffects = () => {
 				hoveringEl.style.pointerEvents = `auto`;
 			}
 
-			setHasClicked(true);
-			/* @ts-ignore */
-			setRippleIndex((prevIndex: number) => prevIndex + 1);
+			if (!state.iosPointerActive) {
+				setHasClicked(true);
+				/* @ts-ignore */
+				setRippleIndex((prevIndex: number) => prevIndex + 1);
 
-			/* @ts-ignore */
-			setRipples((prevRipples) => [
-				...prevRipples,
-				<Ripple
-					key={`awesome-cursor-ripple-${prevRipples.length}`}
-					x={state.cursorX}
-					y={state.cursorY}
-					animationDuration={rippleAnimationDuration}
-					rippleColor={rippleColor}
-				/>,
-			]);
+				/* @ts-ignore */
+				setRipples((prevRipples) => [
+					...prevRipples,
+					<Ripple
+						key={`awesome-cursor-ripple-${prevRipples.length}`}
+						x={state.cursorX}
+						y={state.cursorY}
+						animationDuration={rippleAnimationDuration}
+						rippleColor={rippleColor}
+					/>,
+				]);
+			}
 		},
 		[rippleColor],
 	);
@@ -58,13 +60,15 @@ const SideEffects = () => {
 	}, []);
 
 	useEffect(() => {
-		if (rippleIndex > 0) {
-			const timer = setTimeout(() => {
-				setRippleIndex(0);
-				setRipples([]);
-			}, rippleAnimationDuration * rippleIndex);
+		if (!state.iosPointerActive) {
+			if (rippleIndex > 0) {
+				const timer = setTimeout(() => {
+					setRippleIndex(0);
+					setRipples([]);
+				}, rippleAnimationDuration * rippleIndex);
 
-			return () => clearTimeout(timer);
+				return () => clearTimeout(timer);
+			}
 		}
 	}, [rippleIndex]);
 
