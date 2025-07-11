@@ -17,7 +17,7 @@ const DynamicColorDemo = () => {
 					flexDirection="column"
 				>
 					<Typography variant="h3">iOS Pointer</Typography>
-					<Alert severity="info">iOs pointer animation.</Alert>
+					<Alert severity="info">Add a premium look to your elements!</Alert>
 				</Grid>
 				<Grid container justifyContent="center" alignItems="center">
 					<Grid>

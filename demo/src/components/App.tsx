@@ -6,6 +6,7 @@ import DynamicColorDemo from './DynamicColorDemo';
 import TextCursorDemo from './TextCursorDemo';
 import CustomContentCursorDemo from './CustomContentCursorDemo';
 import IosPointerDemo from './IosPointerDemo';
+import CursorFollowDemo from './CursorFollowDemo';
 
 // Create dark theme
 const darkTheme = createTheme({
@@ -43,6 +44,9 @@ const App = () => {
 				</Grid>
 				<Grid sx={{ m: 2 }}>
 					<IosPointerDemo />
+				</Grid>
+				<Grid sx={{ m: 2 }}>
+					<CursorFollowDemo />
 				</Grid>
 			</Grid>
 		</ThemeProvider>
