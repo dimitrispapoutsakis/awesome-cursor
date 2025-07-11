@@ -32,6 +32,10 @@ interface IUseGlobal {
 	rippleAnimationDuration?: number;
 	setHasClicked: (hasClicked: boolean) => void;
 	setHoveringIosPointerStyle: (style: CSSProperties) => void;
+	ripples: React.ReactNode[];
+	setRipples: (ripples: React.ReactNode[]) => void;
+	rippleIndex: number;
+	setRippleIndex: (index: number) => void;
 }
 
 const GlobalContext = createContext<IUseGlobal | undefined>(undefined);
@@ -70,6 +74,8 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 	const [textCursorStyle, setTextCursorStyle] = useState<CSSProperties>({});
 	const [buttonCursorStyle, setButtonCursorStyle] = useState<CSSProperties>({});
 	const [renderButtonCursor, setRenderButtonCursor] = useState(false);
+	const [ripples, setRipples] = useState<React.ReactNode[]>([]);
+	const [rippleIndex, setRippleIndex] = useState(0);
 
 	const [hoveringIosPointerStyle, setHoveringIosPointerStyle] =
 		useState<CSSProperties>({});
@@ -103,6 +109,10 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 		setRenderButtonCursor,
 		setHasClicked,
 		setHoveringIosPointerStyle,
+		ripples,
+		setRipples,
+		rippleIndex,
+		setRippleIndex,
 	};
 
 	return (
@@ -139,14 +149,18 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 					}}
 				>
 					{renderButtonCursor && <span>{renderOnHover}</span>}
-					{hasClicked && ripple && !state.iosPointerActive && (
-						<Ripple
-							x={state.cursorX}
-							y={state.cursorY}
-							animationDuration={rippleAnimationDuration}
-							rippleColor={rippleColor}
-						/>
-					)}
+					{hasClicked &&
+						ripple &&
+						!state.iosPointerActive &&
+						ripples.map((_, i: number) => (
+							<Ripple
+								key={`awesome-cursor-ripple-${i}`}
+								x={state.cursorX}
+								y={state.cursorY}
+								animationDuration={rippleAnimationDuration}
+								rippleColor={rippleColor}
+							/>
+						))}
 				</div>
 				{children}
 			</div>

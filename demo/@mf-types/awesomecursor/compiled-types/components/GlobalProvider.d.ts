@@ -20,6 +20,10 @@ interface IUseGlobal {
     rippleAnimationDuration?: number;
     setHasClicked: (hasClicked: boolean) => void;
     setHoveringIosPointerStyle: (style: CSSProperties) => void;
+    ripples: React.ReactNode[];
+    setRipples: (ripples: React.ReactNode[]) => void;
+    rippleIndex: number;
+    setRippleIndex: (index: number) => void;
 }
 interface IGlobalProvider {
     children: ReactNode;

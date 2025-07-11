@@ -3,9 +3,11 @@ import { useCallback, useEffect } from 'react';
 import state from '../helpers/State';
 import { useGlobal } from './GlobalProvider';
 import { isHoveringToAnchor } from '@/utils/ui.util';
+import Ripple from './Ripple/Ripple';
 
 const SideEffects = () => {
-	const { setHasClicked, iosPointerAnchorEl } = useGlobal();
+	const { setHasClicked, iosPointerAnchorEl, rippleColor } = useGlobal();
+	const { setRipples, setRippleIndex, rippleIndex } = useGlobal();
 
 	const hideNativeCursor = useCallback(() => {
 		const allEls = document.querySelectorAll('*');
@@ -14,23 +16,36 @@ const SideEffects = () => {
 		});
 	}, []);
 
-	const onPointerDown = useCallback((e: MouseEvent) => {
-		(state.awesomeCursorInnerEl as HTMLElement).style.transform =
-			`translate(-50%, -50%) scale3d(.85, .85, .85)`;
+	const onPointerDown = useCallback(
+		(e: MouseEvent) => {
+			(state.awesomeCursorInnerEl as HTMLElement).style.transform =
+				`translate(-50%, -50%) scale3d(.85, .85, .85)`;
 
-		const hoveringEl = e.target as HTMLElement;
-		if (isHoveringToAnchor(hoveringEl, iosPointerAnchorEl)) {
-			hoveringEl.style.transition = `transform .15s ease`;
-			hoveringEl.style.transform = `scale3d(.85, .85, .85)`;
-			hoveringEl.style.pointerEvents = `auto`;
-		}
+			const hoveringEl = e.target as HTMLElement;
+			if (isHoveringToAnchor(hoveringEl, iosPointerAnchorEl)) {
+				hoveringEl.style.transition = `transform .15s ease`;
+				hoveringEl.style.transform = `scale3d(.85, .85, .85)`;
+				hoveringEl.style.pointerEvents = `auto`;
+			}
 
-		setHasClicked(true);
+			setHasClicked(true);
+			/* @ts-ignore */
+			setRippleIndex((prevIndex: number) => prevIndex + 1);
 
-		setTimeout(() => {
-			setHasClicked(false);
-		}, rippleAnimationDuration);
-	}, []);
+			/* @ts-ignore */
+			setRipples((prevRipples) => [
+				...prevRipples,
+				<Ripple
+					key={`awesome-cursor-ripple-${prevRipples.length}`}
+					x={state.cursorX}
+					y={state.cursorY}
+					animationDuration={rippleAnimationDuration}
+					rippleColor={rippleColor}
+				/>,
+			]);
+		},
+		[rippleColor],
+	);
 
 	const onPointerUp = useCallback((e: MouseEvent) => {
 		const hoveringEl = e.target as HTMLElement;
@@ -41,6 +56,17 @@ const SideEffects = () => {
 			hoveringEl.style.transform = `translate3d(0, 0, 0)`;
 		}, 100);
 	}, []);
+
+	useEffect(() => {
+		if (rippleIndex > 0) {
+			const timer = setTimeout(() => {
+				setRippleIndex(0);
+				setRipples([]);
+			}, rippleAnimationDuration * rippleIndex);
+
+			return () => clearTimeout(timer);
+		}
+	}, [rippleIndex]);
 
 	useEffect(() => {
 		hideNativeCursor();
