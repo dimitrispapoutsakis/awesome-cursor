@@ -31,7 +31,9 @@ const TextCursor = () => {
 		document.addEventListener(
 			'mousemove',
 			() => {
-				handleTextCursor();
+				if (!state.iosPointerActive) {
+					handleTextCursor();
+				}
 			},
 			{ passive: true },
 		);

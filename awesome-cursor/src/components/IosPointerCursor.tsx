@@ -15,17 +15,22 @@ const IosPointerCursor = () => {
 			const offsetY = state.mouseY - (anchorRect.top + anchorRect.height / 2);
 
 			// Convert to percentages and cap at 5%
-			const maxOffsetX = Math.max(
-				-5,
-				Math.min(5, (offsetX / anchorRect.width) * 100),
-			);
-			const maxOffsetY = Math.max(
-				-5,
-				Math.min(5, (offsetY / anchorRect.height) * 100),
-			);
+			/**
+			 * Calculate the offset of the mouse pointer from the center of the anchor element,
+			 * convert it to a percentage relative to the element's width/height,
+			 * and clamp the value between -5% and 5% to limit the translation.
+			 *
+			 * maxOffsetX: Horizontal offset as a percentage of the element's width, clamped to [-5, 5].
+			 * maxOffsetY: Vertical offset as a percentage of the element's height, clamped to [-5, 5].
+			 */
+			// Calculate the offset in px, clamped to a maximum of 5px in any direction
+			const maxOffsetX = Math.max(-1.5, Math.min(1.5, offsetX));
+			const maxOffsetY = Math.max(-1.5, Math.min(1.5, offsetY));
 
-			const pointerOffsetx = state.mouseX - offsetX / 1.2;
-			const pointerOffsetY = state.mouseY - offsetY / 1.2;
+			// const pointerOffsetx = state.mouseX - offsetX / 1.2;
+			// const pointerOffsetY = state.mouseY - offsetY / 1.2;
+			const pointerOffsetx = state.mouseX - offsetX / 1.2 + maxOffsetX;
+			const pointerOffsetY = state.mouseY - offsetY / 1.2 + maxOffsetY;
 
 			setHoveringIosPointerStyle({
 				width: hoveringEl.offsetWidth,
@@ -48,10 +53,9 @@ const IosPointerCursor = () => {
 				`translate3d(${pointerOffsetx}px, ${pointerOffsetY}px, 0)`;
 
 			if (innerSpanEl) {
-				innerSpanEl.style.transition = 'transform .10s ease';
 				innerSpanEl.style.pointerEvents = `none`;
 				innerSpanEl.style.display = `inline-block`;
-				innerSpanEl.style.transform = `translate3d(${maxOffsetX}%, ${maxOffsetY}%, 0px)`;
+				innerSpanEl.style.transform = `translate3d(${maxOffsetX}px, ${maxOffsetY}px, 0px)`;
 			}
 
 			state.iosPointerActive = true;
