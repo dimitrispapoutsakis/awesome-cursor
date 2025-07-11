@@ -20,7 +20,7 @@ export interface IAwesomeCursor {
 const AwesomeCursor = (props: IAwesomeCursor) => {
 	const {
 		color = 'cyan',
-		textColor = 'white',
+		textColor = 'black',
 		dynamicColor = true,
 		ripple = true,
 		rippleColor,

@@ -132,6 +132,7 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 						transition: `padding .25s ${bezierButter}, transform .15s ${bezierButter}, border-radius .15s ${bezierButter}, width .25s ${bezierButter}, height .25s ${bezierButter}, background-color .25s ${bezierButter}`,
 						transformOrigin: 'center',
 						transform: 'translate(-50%, -50%)',
+						color: textColor,
 						...textCursorStyle,
 						...buttonCursorStyle,
 						...hoveringIosPointerStyle,
