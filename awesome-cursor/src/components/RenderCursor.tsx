@@ -21,7 +21,7 @@ const RenderCursor = () => {
 					setButtonCursorStyle({
 						width: 'fit-content',
 						height: 'fit-content',
-						padding: '15px 35px',
+						padding: '15px',
 						borderRadius: '20px',
 						backgroundColor: color,
 					});
