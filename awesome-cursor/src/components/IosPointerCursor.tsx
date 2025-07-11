@@ -24,10 +24,9 @@ const IosPointerCursor = () => {
 				Math.min(5, (offsetY / anchorRect.height) * 100),
 			);
 
-			const pointerOffsetx = state.mouseX - offsetX / 1.3;
-			const pointerOffsetY = state.mouseY - offsetY / 1.3;
+			const pointerOffsetx = state.mouseX - offsetX / 1.2;
+			const pointerOffsetY = state.mouseY - offsetY / 1.2;
 
-			console.log(isDarkEl(hoveringEl));
 			setHoveringIosPointerStyle({
 				width: hoveringEl.offsetWidth,
 				height: hoveringEl.offsetHeight,

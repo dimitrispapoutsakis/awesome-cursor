@@ -6,8 +6,10 @@ const CursorAnimator = () => {
 	const animate = useCallback(() => {
 		State.cursorX += State.mouseX - State.cursorX;
 		State.cursorY += State.mouseY - State.cursorY;
-		(State.awesomeCursorEl as HTMLElement).style.transform =
-			`translate3d(${State.cursorX}px, ${State.cursorY}px, 0)`;
+		if (!State.iosPointerActive) {
+			(State.awesomeCursorEl as HTMLElement).style.transform =
+				`translate3d(${State.cursorX}px, ${State.cursorY}px, 0)`;
+		}
 	}, []);
 
 	/* const initErrorHandler = useCallback(() => {
