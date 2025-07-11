@@ -12,3 +12,8 @@ export function areNumbersClose(
 ): boolean {
 	return Math.abs(a - b) <= epsilon;
 }
+
+// Use scaling function that preserves all movements without any max limit
+export const scale = (value: number, factor: number) => {
+	return value * factor;
+};

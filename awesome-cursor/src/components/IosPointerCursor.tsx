@@ -3,11 +3,6 @@ import { isDarkEl, isHoveringToAnchor } from '@utils/ui.util';
 import { useCallback, useEffect } from 'react';
 import { useGlobal } from './GlobalProvider';
 
-// Use scaling function that preserves all movements without any max limit
-const scale = (value: number, factor: number) => {
-	return value * factor;
-};
-
 const IosPointerCursor = () => {
 	const { iosPointerAnchorEl, setHoveringIosPointerStyle } = useGlobal();
 
@@ -22,8 +17,8 @@ const IosPointerCursor = () => {
 			const maxOffsetX = scale(offsetX, 0.2);
 			const maxOffsetY = scale(offsetY, 0.2);
 
-			const pointerOffsetx = state.mouseX - offsetX / 1.2;
-			const pointerOffsetY = state.mouseY - offsetY / 1.2;
+			const pointerOffsetx = state.mouseX - offsetX / 1.4;
+			const pointerOffsetY = state.mouseY - offsetY / 1.4;
 
 			setHoveringIosPointerStyle({
 				width: hoveringEl.offsetWidth,
