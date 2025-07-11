@@ -3,6 +3,11 @@ import { isDarkEl, isHoveringToAnchor } from '@utils/ui.util';
 import { useCallback, useEffect } from 'react';
 import { useGlobal } from './GlobalProvider';
 
+// Use scaling function that preserves all movements without any max limit
+const scale = (value: number, factor: number) => {
+	return value * factor;
+};
+
 const IosPointerCursor = () => {
 	const { iosPointerAnchorEl, setHoveringIosPointerStyle } = useGlobal();
 
@@ -14,23 +19,11 @@ const IosPointerCursor = () => {
 			const offsetX = state.mouseX - (anchorRect.left + anchorRect.width / 2);
 			const offsetY = state.mouseY - (anchorRect.top + anchorRect.height / 2);
 
-			// Convert to percentages and cap at 5%
-			/**
-			 * Calculate the offset of the mouse pointer from the center of the anchor element,
-			 * convert it to a percentage relative to the element's width/height,
-			 * and clamp the value between -5% and 5% to limit the translation.
-			 *
-			 * maxOffsetX: Horizontal offset as a percentage of the element's width, clamped to [-5, 5].
-			 * maxOffsetY: Vertical offset as a percentage of the element's height, clamped to [-5, 5].
-			 */
-			// Calculate the offset in px, clamped to a maximum of 5px in any direction
-			const maxOffsetX = Math.max(-1.5, Math.min(1.5, offsetX));
-			const maxOffsetY = Math.max(-1.5, Math.min(1.5, offsetY));
+			const maxOffsetX = scale(offsetX, 0.2);
+			const maxOffsetY = scale(offsetY, 0.2);
 
-			// const pointerOffsetx = state.mouseX - offsetX / 1.2;
-			// const pointerOffsetY = state.mouseY - offsetY / 1.2;
-			const pointerOffsetx = state.mouseX - offsetX / 1.2 + maxOffsetX;
-			const pointerOffsetY = state.mouseY - offsetY / 1.2 + maxOffsetY;
+			const pointerOffsetx = state.mouseX - offsetX / 1.2;
+			const pointerOffsetY = state.mouseY - offsetY / 1.2;
 
 			setHoveringIosPointerStyle({
 				width: hoveringEl.offsetWidth,
