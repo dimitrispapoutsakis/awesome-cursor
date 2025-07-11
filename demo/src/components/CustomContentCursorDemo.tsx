@@ -18,9 +18,7 @@ const CustomContentCursorDemo = () => {
 					flexDirection="column"
 				>
 					<Typography variant="h3">Custom Content Cursor</Typography>
-					<Alert severity="info">
-						AwesomeCursor can render custom content.
-					</Alert>
+					<Alert severity="info">Renders custom content.</Alert>
 				</Grid>
 				<Grid container justifyContent="center" alignItems="center">
 					<Grid>

@@ -17,9 +17,7 @@ const TextCursorDemo = () => {
 					flexDirection="column"
 				>
 					<Typography variant="h3">Text Cursor</Typography>
-					<Alert severity="info">
-						<strong>AwesomeCursor transforms when hovering over text</strong>
-					</Alert>
+					<Alert severity="info">Ttransforms when hovering over text</Alert>
 				</Grid>
 				<Grid container justifyContent="center" alignItems="center">
 					<Grid>
