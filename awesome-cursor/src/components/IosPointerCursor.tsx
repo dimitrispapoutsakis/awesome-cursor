@@ -18,8 +18,8 @@ const IosPointerCursor = () => {
 			const maxOffsetX = scale(offsetX, 0.2);
 			const maxOffsetY = scale(offsetY, 0.2);
 
-			const pointerOffsetx = state.mouseX - offsetX / 1.4;
-			const pointerOffsetY = state.mouseY - offsetY / 1.4;
+			const pointerOffsetx = state.mouseX - offsetX / 1.3;
+			const pointerOffsetY = state.mouseY - offsetY / 1.3;
 
 			setHoveringIosPointerStyle({
 				width: hoveringEl.offsetWidth,
@@ -29,7 +29,6 @@ const IosPointerCursor = () => {
 				backgroundColor: isDarkEl(hoveringEl)
 					? 'rgb(61, 61, 61)'
 					: 'rgb(221, 221, 221)',
-				transformOrigin: '50% 50% 0px',
 			});
 
 			(state.awesomeCursorEl as HTMLElement).style.mixBlendMode = isDarkEl(
