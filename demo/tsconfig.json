@@ -20,7 +20,8 @@
 		"noUnusedParameters": true,
 		"paths": {
 			"*": ["./@mf-types/*"],
-			"awesomecursor": ["../awesome-cursor/dist/index.d.ts"]
+			"awesomecursor": ["../awesome-cursor/dist/index.d.ts"],
+			"@img/*": ["./src/assets/img/*"]
 		}
 	},
 	"include": ["src"]

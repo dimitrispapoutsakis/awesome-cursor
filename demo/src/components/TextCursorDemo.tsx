@@ -1,6 +1,6 @@
 import { Alert, Box, Card, Grid, Typography } from '@mui/material';
 
-const DynamicColorDemo = () => {
+const TextCursorDemo = () => {
 	return (
 		<Box>
 			<Grid
@@ -26,23 +26,6 @@ const DynamicColorDemo = () => {
 						<Card
 							sx={{
 								p: 2,
-								backgroundColor: '#fff',
-								width: '300px',
-								height: '150px',
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-							}}
-						>
-							<Typography style={{ color: 'black' }} variant="h4">
-								Hover me
-							</Typography>
-						</Card>
-					</Grid>
-					<Grid>
-						<Card
-							sx={{
-								p: 2,
 								backgroundColor: '#151c23',
 								width: '300px',
 								height: '150px',
@@ -60,4 +43,4 @@ const DynamicColorDemo = () => {
 	);
 };
 
-export default DynamicColorDemo;
+export default TextCursorDemo;

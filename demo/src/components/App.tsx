@@ -4,6 +4,7 @@ import { AwesomeCursor } from 'awesomecursor';
 // import Sidebar from './Sidebar';
 import DynamicColorDemo from './DynamicColorDemo';
 import TextCursorDemo from './TextCursorDemo';
+import CustomContentCursorDemo from './CustomContentCursorDemo';
 
 // Create dark theme
 const darkTheme = createTheme({
@@ -16,7 +17,13 @@ const App = () => {
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
-			<AwesomeCursor />
+			<AwesomeCursor
+				dynamicColor={true}
+				renderOnHover="View Gallery"
+				anchorEl=".awesome-cursor-anchor"
+				textColor="black"
+				iosPointerAnchorEl="button"
+			/>
 
 			<Grid
 				container
@@ -29,6 +36,9 @@ const App = () => {
 				</Grid>
 				<Grid sx={{ m: 2 }}>
 					<TextCursorDemo />
+				</Grid>
+				<Grid sx={{ m: 2 }}>
+					<CustomContentCursorDemo />
 				</Grid>
 			</Grid>
 		</ThemeProvider>
