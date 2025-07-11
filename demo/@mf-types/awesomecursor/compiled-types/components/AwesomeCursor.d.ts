@@ -1,3 +1,4 @@
+import { TTheme } from '@/typings';
 export interface IAwesomeCursor {
     color?: string;
     textColor?: string;
@@ -7,6 +8,8 @@ export interface IAwesomeCursor {
     renderOnHover?: string | React.ReactNode[];
     anchorEl?: string;
     iosPointerAnchorEl?: string;
+    follow?: boolean;
+    theme?: TTheme;
 }
 declare const AwesomeCursor: (props: IAwesomeCursor) => import("react/jsx-runtime").JSX.Element;
 export default AwesomeCursor;

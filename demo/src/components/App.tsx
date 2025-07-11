@@ -25,6 +25,8 @@ const App = () => {
 				anchorEl=".awesome-cursor-anchor"
 				textColor="black"
 				iosPointerAnchorEl="button"
+				follow
+				theme="dark"
 			/>
 
 			<Grid

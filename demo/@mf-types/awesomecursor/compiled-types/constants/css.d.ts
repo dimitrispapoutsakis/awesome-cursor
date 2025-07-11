@@ -3,6 +3,12 @@ export declare const darkMirage = "#1C252E";
 export declare const darkEbonyClay = "#212B36";
 export declare const darkPickledBluewood = "#273849";
 export declare const darkBismark = "#476685";
+export declare const whiteAlto = "#D4D4D4";
+export declare const silver = "#C9C9C9";
+export declare const silver2 = "#b9b9b9";
+export declare const mercury = "#e2e2e2";
+export declare const silverChalice = "#a7a7a7";
+export declare const grayMineShaft = "#333";
 export declare const redCoral = "#ff4646";
 export declare const linearGradientDark = "linear-gradient(to left, #212B36, #151c23)";
 export declare const linearGradientDarkSecondary = "linear-gradient(to left, #212B36, #273849)";
@@ -42,3 +48,4 @@ export declare const transitionDefault: {
     duration: number;
     ease: string;
 };
+export declare const materialBoxShadowMd = "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)";

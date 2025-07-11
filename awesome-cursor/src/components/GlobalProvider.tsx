@@ -10,6 +10,7 @@ import {
 	useState,
 } from 'react';
 import { bezierButter } from '@/constants/css';
+import { TTheme } from '@/typings';
 
 interface IUseGlobal {
 	appliedColor: string;
@@ -36,6 +37,10 @@ interface IUseGlobal {
 	setRipples: (ripples: React.ReactNode[]) => void;
 	rippleIndex: number;
 	setRippleIndex: (index: number) => void;
+	follow?: boolean;
+	followPopupVisible?: boolean;
+	setFollowPopupVisible: (visible: boolean) => void;
+	theme?: TTheme;
 }
 
 const GlobalContext = createContext<IUseGlobal | undefined>(undefined);
@@ -50,6 +55,8 @@ interface IGlobalProvider {
 	renderOnHover?: string | React.ReactNode[];
 	anchorEl?: string;
 	iosPointerAnchorEl?: string;
+	follow?: boolean;
+	theme?: TTheme;
 }
 
 export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
@@ -62,6 +69,8 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 		renderOnHover,
 		anchorEl,
 		iosPointerAnchorEl,
+		follow,
+		theme,
 	} = props;
 	const [awesomeCursorEl, setAwesomeCursorEl] = useState<HTMLElement | null>(
 		null,
@@ -76,6 +85,7 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 	const [renderButtonCursor, setRenderButtonCursor] = useState(false);
 	const [ripples, setRipples] = useState<React.ReactNode[]>([]);
 	const [rippleIndex, setRippleIndex] = useState(0);
+	const [followPopupVisible, setFollowPopupVisible] = useState(false);
 
 	const [hoveringIosPointerStyle, setHoveringIosPointerStyle] =
 		useState<CSSProperties>({});
@@ -113,6 +123,10 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 		setRipples,
 		rippleIndex,
 		setRippleIndex,
+		follow,
+		followPopupVisible,
+		setFollowPopupVisible,
+		theme,
 	};
 
 	return (

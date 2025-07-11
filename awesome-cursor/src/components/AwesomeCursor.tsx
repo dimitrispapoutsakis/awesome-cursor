@@ -1,10 +1,12 @@
 import CursorAnimator from './CursorAnimator';
 import DynamicColor from './DynamicColor';
+import FollowCursor from './FollowCurosr';
 import { GlobalProvider } from './GlobalProvider';
 import IosPointerCursor from './IosPointerCursor';
 import RenderCursor from './RenderCursor';
 import SideEffects from './SideEffects';
 import TextCursor from './TextCursor';
+import { TTheme } from '@/typings';
 
 export interface IAwesomeCursor {
 	color?: string;
@@ -15,6 +17,8 @@ export interface IAwesomeCursor {
 	renderOnHover?: string | React.ReactNode[];
 	anchorEl?: string;
 	iosPointerAnchorEl?: string;
+	follow?: boolean;
+	theme?: TTheme;
 }
 
 const AwesomeCursor = (props: IAwesomeCursor) => {
@@ -27,6 +31,8 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 		renderOnHover,
 		anchorEl,
 		iosPointerAnchorEl,
+		follow = false,
+		theme = 'light',
 	} = props;
 
 	return (
@@ -39,6 +45,8 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 			renderOnHover={renderOnHover}
 			anchorEl={anchorEl}
 			iosPointerAnchorEl={iosPointerAnchorEl}
+			follow={follow}
+			theme={theme}
 		>
 			<SideEffects />
 			<CursorAnimator />
@@ -46,6 +54,7 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 			<TextCursor />
 			<RenderCursor />
 			<IosPointerCursor />
+			{follow && <FollowCursor />}
 		</GlobalProvider>
 	);
 };

@@ -1,0 +1,15 @@
+.followCursor {
+  animation: follow-popup-appear .25s ease-out both;
+}
+
+@keyframes follow-popup-appear {
+  0% {
+    opacity: 0;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

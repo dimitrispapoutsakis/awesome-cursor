@@ -1,3 +1,5 @@
+import { TTheme } from '@/typings';
+
 export const rgbStringToArray = (rgbString: string) => {
 	// "rgb(255, 255, 255)" => [255, 255, 255]
 	return rgbString?.match(/\d+/g)?.map(Number);
@@ -20,3 +22,5 @@ export const isHoveringToAnchor = (
 		hoveringEl.tagName.toString().toLowerCase() === anchorEl
 	);
 };
+
+export const isDarkTheme = (theme: TTheme) => theme === 'dark';

@@ -1,4 +1,5 @@
 import { type CSSProperties, type ReactNode } from 'react';
+import { TTheme } from '@/typings';
 interface IUseGlobal {
     appliedColor: string;
     setAppliedColor: (color: string) => void;
@@ -24,6 +25,10 @@ interface IUseGlobal {
     setRipples: (ripples: React.ReactNode[]) => void;
     rippleIndex: number;
     setRippleIndex: (index: number) => void;
+    follow?: boolean;
+    followPopupVisible?: boolean;
+    setFollowPopupVisible: (visible: boolean) => void;
+    theme?: TTheme;
 }
 interface IGlobalProvider {
     children: ReactNode;
@@ -35,6 +40,8 @@ interface IGlobalProvider {
     renderOnHover?: string | React.ReactNode[];
     anchorEl?: string;
     iosPointerAnchorEl?: string;
+    follow?: boolean;
+    theme?: TTheme;
 }
 export declare const GlobalProvider: ({ children, ...props }: IGlobalProvider) => import("react/jsx-runtime").JSX.Element;
 export declare const useGlobal: () => IUseGlobal;

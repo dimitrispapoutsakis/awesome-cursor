@@ -7,6 +7,16 @@ export const darkEbonyClay = '#212B36';
 export const darkPickledBluewood = '#273849';
 export const darkBismark = '#476685';
 
+/* Lights... */
+export const whiteAlto = '#D4D4D4';
+
+/* Grays... */
+export const silver = '#C9C9C9';
+export const silver2 = '#b9b9b9';
+export const mercury = '#e2e2e2';
+export const silverChalice = '#a7a7a7';
+export const grayMineShaft = '#333';
+
 /* Reds... */
 export const redCoral = '#ff4646';
 
@@ -47,3 +57,7 @@ export const durationDefault = 0.25;
 
 // Framer Motion...
 export const transitionDefault = { duration: 0.5, ease: 'easeInOut' };
+
+/* Shadows... */
+export const materialBoxShadowMd =
+	'0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)';
