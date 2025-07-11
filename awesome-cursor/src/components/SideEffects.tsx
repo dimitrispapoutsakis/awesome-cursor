@@ -2,9 +2,10 @@ import { rippleAnimationDuration } from '@constants/generic';
 import { useCallback, useEffect } from 'react';
 import state from '../helpers/State';
 import { useGlobal } from './GlobalProvider';
+import { isHoveringToAnchor } from '@/utils/ui.util';
 
 const SideEffects = () => {
-	const { setHasClicked } = useGlobal();
+	const { setHasClicked, iosPointerAnchorEl } = useGlobal();
 
 	const hideNativeCursor = useCallback(() => {
 		const allEls = document.querySelectorAll('*');
@@ -13,11 +14,15 @@ const SideEffects = () => {
 		});
 	}, []);
 
-	const onPointerDown = useCallback(() => {
+	const onPointerDown = useCallback((e: MouseEvent) => {
 		(state.awesomeCursorInnerEl as HTMLElement).style.transform =
 			`translate(-50%, -50%) scale3d(.85, .85, .85)`;
 
-		if (state.iosPointerActive) {
+		const hoveringEl = e.target as HTMLElement;
+		if (isHoveringToAnchor(hoveringEl, iosPointerAnchorEl)) {
+			hoveringEl.style.transition = `transform .15s ease`;
+			hoveringEl.style.transform = `scale3d(.85, .85, .85)`;
+			hoveringEl.style.pointerEvents = `auto`;
 		}
 
 		setHasClicked(true);
@@ -27,10 +32,13 @@ const SideEffects = () => {
 		}, rippleAnimationDuration);
 	}, []);
 
-	const onPointerUp = useCallback(() => {
+	const onPointerUp = useCallback((e: MouseEvent) => {
+		const hoveringEl = e.target as HTMLElement;
 		setTimeout(() => {
 			(state.awesomeCursorInnerEl as HTMLElement).style.transform =
-				`translate(-50%, -50%) scale3d(1, 1, 1)`;
+				`translate(-50%,
+				 -50%) scale3d(1, 1, 1)`;
+			hoveringEl.style.transform = `translate3d(0, 0, 0)`;
 		}, 100);
 	}, []);
 

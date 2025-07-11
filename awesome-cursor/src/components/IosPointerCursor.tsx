@@ -2,6 +2,7 @@ import state from '@helpers/State';
 import { isDarkEl, isHoveringToAnchor } from '@utils/ui.util';
 import { useCallback, useEffect } from 'react';
 import { useGlobal } from './GlobalProvider';
+import { scale } from '@/utils/math.util';
 
 const IosPointerCursor = () => {
 	const { iosPointerAnchorEl, setHoveringIosPointerStyle } = useGlobal();

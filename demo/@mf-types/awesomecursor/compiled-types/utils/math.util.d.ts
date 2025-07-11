@@ -6,3 +6,4 @@
  * @returns true if the numbers are close enough, false otherwise
  */
 export declare function areNumbersClose(a: number, b: number, epsilon: number): boolean;
+export declare const scale: (value: number, factor: number) => number;
