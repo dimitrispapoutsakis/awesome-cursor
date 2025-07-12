@@ -10,7 +10,7 @@ import {
 	useState,
 } from 'react';
 import { bezierButter } from '@/constants/css';
-import { TTheme } from '@/typings';
+import { IGestures, TTheme } from '@/typings';
 
 interface IUseGlobal {
 	appliedColor: string;
@@ -42,6 +42,7 @@ interface IUseGlobal {
 	followPopupVisible?: boolean;
 	setFollowPopupVisible: (visible: boolean) => void;
 	theme?: TTheme;
+	gestures?: IGestures;
 }
 
 const GlobalContext = createContext<IUseGlobal | undefined>(undefined);
@@ -58,6 +59,7 @@ interface IGlobalProvider {
 	iosPointerAnchorEl?: string;
 	follow?: boolean;
 	theme?: TTheme;
+	gestures?: IGestures;
 }
 
 export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
@@ -72,11 +74,12 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 		iosPointerAnchorEl,
 		follow,
 		theme,
+		gestures,
 	} = props;
 	const [awesomeCursorEl, setAwesomeCursorEl] = useState<HTMLElement | null>(
 		null,
 	);
-	console.log('rendering');
+
 	const [appliedColor, setAppliedColor] = useState('');
 	const [hasClicked, setHasClicked] = useState(false);
 	const [awesomeCursorInnerEl, setAwesomeCursorInnerEl] =
@@ -130,6 +133,7 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 		followPopupVisible,
 		setFollowPopupVisible,
 		theme,
+		gestures,
 	};
 
 	return (

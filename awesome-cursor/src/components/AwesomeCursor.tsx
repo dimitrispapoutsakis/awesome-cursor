@@ -1,12 +1,13 @@
 import CursorAnimator from './CursorAnimator';
 import DynamicColor from './DynamicColor';
 import FollowCursor from './FollowCurosr';
+import GestureCursor from './GestureCursor';
 import { GlobalProvider } from './GlobalProvider';
 import IosPointerCursor from './IosPointerCursor';
 import RenderCursor from './RenderCursor';
 import SideEffects from './SideEffects';
 import TextCursor from './TextCursor';
-import { TTheme } from '@/typings';
+import { IGestures, TTheme } from '@/typings';
 
 export interface IAwesomeCursor {
 	color?: string;
@@ -19,6 +20,7 @@ export interface IAwesomeCursor {
 	iosPointerAnchorEl?: string;
 	follow?: boolean;
 	theme?: TTheme;
+	gestures?: IGestures;
 }
 
 const AwesomeCursor = (props: IAwesomeCursor) => {
@@ -33,6 +35,10 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 		iosPointerAnchorEl,
 		follow = false,
 		theme = 'light',
+		gestures = {
+			scrollToTop: true,
+			scrollToBottom: true,
+		},
 	} = props;
 
 	return (
@@ -47,6 +53,7 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 			iosPointerAnchorEl={iosPointerAnchorEl}
 			follow={follow}
 			theme={theme}
+			gestures={gestures}
 		>
 			<SideEffects />
 			<CursorAnimator />
@@ -55,6 +62,7 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 			<RenderCursor />
 			<IosPointerCursor />
 			{follow && <FollowCursor />}
+			<GestureCursor />
 		</GlobalProvider>
 	);
 };
