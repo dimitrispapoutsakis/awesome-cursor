@@ -1,12 +1,19 @@
+/* Ui... */
 export type TTheme = 'light' | 'dark';
 
-export interface IGestures {
-	scrollToTop?: boolean;
-	scrollToBottom?: boolean;
-	context: TGestureContext;
+/* Device... */
+export interface IScrollGesture {
+	active?: true;
+	onScrollEnd?: null | (() => void);
 }
 
-export type TGestureContext = 'scroll';
+export interface IScrollGestures {
+	scrollToTop?: IScrollGesture;
+	scrollToBottom?: IScrollGesture;
+	mouseButton?: 'left' | 'right';
+}
+
+export type TGestures = IScrollGestures;
 
 export interface ISwipeDirections {
 	top: boolean;

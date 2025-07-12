@@ -7,7 +7,7 @@ import IosPointerCursor from './IosPointerCursor';
 import RenderCursor from './RenderCursor';
 import SideEffects from './SideEffects';
 import TextCursor from './TextCursor';
-import { IGestures, TTheme } from '@/typings';
+import { TGestures, TTheme } from '@/typings';
 
 export interface IAwesomeCursor {
 	color?: string;
@@ -20,7 +20,7 @@ export interface IAwesomeCursor {
 	iosPointerAnchorEl?: string;
 	follow?: boolean;
 	theme?: TTheme;
-	gestures?: IGestures;
+	gestures?: TGestures;
 }
 
 const AwesomeCursor = (props: IAwesomeCursor) => {
@@ -36,8 +36,14 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 		follow = false,
 		theme = 'light',
 		gestures = {
-			scrollToTop: true,
-			scrollToBottom: true,
+			scrollToTop: {
+				active: true,
+				onScrollEnd: null,
+			},
+			scrollToBottom: {
+				active: true,
+				onScrollEnd: null,
+			},
 		},
 	} = props;
 
