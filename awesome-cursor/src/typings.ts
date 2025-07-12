@@ -3,7 +3,7 @@ export type TTheme = 'light' | 'dark';
 
 /* Device... */
 export interface IScrollGesture {
-	active?: true;
+	active?: boolean;
 	onScrollEnd?: null | (() => void);
 }
 

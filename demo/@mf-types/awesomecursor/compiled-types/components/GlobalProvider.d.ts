@@ -1,5 +1,5 @@
 import { type CSSProperties, type ReactNode } from 'react';
-import { TTheme } from '@/typings';
+import { TGestures, TTheme } from '@/typings';
 interface IUseGlobal {
     appliedColor: string;
     setAppliedColor: (color: string) => void;
@@ -13,6 +13,7 @@ interface IUseGlobal {
     iosPointerAnchorEl?: string;
     setTextCursorStyle: (style: CSSProperties) => void;
     setButtonCursorStyle: (style: CSSProperties) => void;
+    isTextCursor?: boolean;
     setIsTextCursor: (isTextCursor: boolean) => void;
     setRenderButtonCursor: (renderButtonCursor: boolean) => void;
     hoveringIosPointerStyle?: CSSProperties;
@@ -29,6 +30,7 @@ interface IUseGlobal {
     followPopupVisible?: boolean;
     setFollowPopupVisible: (visible: boolean) => void;
     theme?: TTheme;
+    gestures?: TGestures;
 }
 interface IGlobalProvider {
     children: ReactNode;
@@ -42,6 +44,7 @@ interface IGlobalProvider {
     iosPointerAnchorEl?: string;
     follow?: boolean;
     theme?: TTheme;
+    gestures?: TGestures;
 }
 export declare const GlobalProvider: ({ children, ...props }: IGlobalProvider) => import("react/jsx-runtime").JSX.Element;
 export declare const useGlobal: () => IUseGlobal;

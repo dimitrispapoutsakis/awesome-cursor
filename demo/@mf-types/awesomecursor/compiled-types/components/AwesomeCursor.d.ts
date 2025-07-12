@@ -1,4 +1,4 @@
-import { TTheme } from '@/typings';
+import { TGestures, TTheme } from '@/typings';
 export interface IAwesomeCursor {
     color?: string;
     textColor?: string;
@@ -10,6 +10,7 @@ export interface IAwesomeCursor {
     iosPointerAnchorEl?: string;
     follow?: boolean;
     theme?: TTheme;
+    gestures?: TGestures;
 }
 declare const AwesomeCursor: (props: IAwesomeCursor) => import("react/jsx-runtime").JSX.Element;
 export default AwesomeCursor;

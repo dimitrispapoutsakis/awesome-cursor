@@ -2,12 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useGlobal } from './GlobalProvider';
 import { isDarkTheme } from '@/utils/ui.util';
 import { TTheme } from '@/typings';
-import {
-	bezierButter,
-	darkBunker,
-	materialBoxShadowMd,
-	whiteAlto,
-} from '@/constants/css';
+import { darkBunker, materialBoxShadowMd, whiteAlto } from '@/constants/css';
+/* @ts-ignore */
 import followCursorStyle from './FollowCursor.module.scss';
 
 const FollowCursor = () => {

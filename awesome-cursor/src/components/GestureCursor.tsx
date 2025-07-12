@@ -2,7 +2,13 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { useGlobal } from './GlobalProvider';
 /* @ts-ignore */
 import SwipeListener from 'swipe-listener';
-import { isSwipeDown, isSwipeUp } from '@/utils/device.util';
+import {
+	isSwipeDown,
+	isSwipeDownGestureActive,
+	isSwipeUp,
+	isSwipeUpGestureActive,
+} from '@/utils/device.util';
+import { IScrollGestures } from '@/typings';
 
 const GestureCursor = () => {
 	const { gestures } = useGlobal();
@@ -14,9 +20,15 @@ const GestureCursor = () => {
 	const onSwipeListener = useCallback((e: any) => {
 		const swipeDirections = e.detail.directions;
 
-		if (isSwipeUp(swipeDirections)) {
+		if (
+			isSwipeUp(swipeDirections) &&
+			isSwipeUpGestureActive(gestures as IScrollGestures)
+		) {
 			window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-		} else if (isSwipeDown(swipeDirections)) {
+		} else if (
+			isSwipeDown(swipeDirections) &&
+			isSwipeDownGestureActive(gestures as IScrollGestures)
+		) {
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}
 	}, []);

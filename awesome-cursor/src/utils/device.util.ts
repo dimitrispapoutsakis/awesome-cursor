@@ -1,10 +1,15 @@
-import type { ISwipeDirections } from '@/typings';
+import type { IScrollGestures, ISwipeDirections, TGestures } from '@/typings';
 
 export const isSwipeUp = (swipeDirections: ISwipeDirections) =>
-	swipeDirections.top === true;
+	swipeDirections.top;
 export const isSwipeDown = (swipeDirections: ISwipeDirections) =>
-	swipeDirections.bottom === true;
+	swipeDirections.bottom;
 export const isSwipeLeft = (swipeDirections: ISwipeDirections) =>
-	swipeDirections.left === true;
+	swipeDirections.left;
 export const isSwipeRight = (swipeDirections: ISwipeDirections) =>
-	swipeDirections.right === true;
+	swipeDirections.right;
+
+export const isSwipeUpGestureActive = (gestures: TGestures) =>
+	gestures.scrollToTop?.active;
+export const isSwipeDownGestureActive = (gestures: TGestures) =>
+	gestures.scrollToBottom?.active;

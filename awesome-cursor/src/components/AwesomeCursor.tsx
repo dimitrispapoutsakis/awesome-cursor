@@ -59,7 +59,16 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 			iosPointerAnchorEl={iosPointerAnchorEl}
 			follow={follow}
 			theme={theme}
-			gestures={gestures}
+			gestures={{
+				scrollToTop: {
+					active: gestures?.scrollToTop?.active ?? true,
+					onScrollEnd: gestures?.scrollToTop?.onScrollEnd ?? null,
+				},
+				scrollToBottom: {
+					active: gestures?.scrollToBottom?.active ?? true,
+					onScrollEnd: gestures?.scrollToBottom?.onScrollEnd ?? null,
+				},
+			}}
 		>
 			<SideEffects />
 			<CursorAnimator />
