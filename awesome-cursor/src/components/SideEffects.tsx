@@ -81,6 +81,11 @@ const SideEffects = () => {
 		document.addEventListener('pointerup', onPointerUp, {
 			passive: true,
 		});
+
+		return () => {
+			document.removeEventListener('pointerdown', onPointerDown);
+			document.removeEventListener('pointerup', onPointerUp);
+		};
 		/* 
 		document.addEventListener(
 			"mousemove",
