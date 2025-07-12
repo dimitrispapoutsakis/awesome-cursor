@@ -26,13 +26,13 @@ const CursorAnimator = () => {
 	}, []);
 
 	useEffect(() => {
-		document.addEventListener(
-			'mousemove',
-			(e) => {
-				handleMousePositioning(e);
-			},
-			{ passive: true },
-		);
+		document.addEventListener('mousemove', handleMousePositioning, {
+			passive: true,
+		});
+
+		return () => {
+			document.removeEventListener('mousemove', handleMousePositioning);
+		};
 	}, []);
 
 	return null;
