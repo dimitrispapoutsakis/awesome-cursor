@@ -29,6 +29,10 @@ const DynamicColor = () => {
 			},
 			{ passive: true },
 		);
+
+		return () => {
+			document.removeEventListener('mousemove', handleDynamicColor);
+		};
 	}, []);
 
 	return null;
