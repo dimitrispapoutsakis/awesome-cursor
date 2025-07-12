@@ -21,17 +21,17 @@ const DynamicColor = () => {
 		}
 	}, [dynamicColor, color]);
 
+	const mouseMoveListener = useCallback(() => {
+		handleDynamicColor();
+	}, []);
+
 	useEffect(() => {
-		document.addEventListener(
-			'mousemove',
-			() => {
-				handleDynamicColor();
-			},
-			{ passive: true },
-		);
+		document.addEventListener('mousemove', mouseMoveListener, {
+			passive: true,
+		});
 
 		return () => {
-			document.removeEventListener('mousemove', handleDynamicColor);
+			document.removeEventListener('mousemove', mouseMoveListener);
 		};
 	}, []);
 
