@@ -26,17 +26,17 @@ const FollowCursor = () => {
 		}
 	}, []);
 
+	const mouseMoveListener = useCallback((e: MouseEvent) => {
+		handleFollowCursor(e);
+	}, []);
+
 	useEffect(() => {
-		document.addEventListener(
-			'mousemove',
-			(e) => {
-				handleFollowCursor(e);
-			},
-			{ passive: true },
-		);
+		document.addEventListener('mousemove', mouseMoveListener, {
+			passive: true,
+		});
 
 		return () => {
-			document.removeEventListener('mousemove', handleFollowCursor);
+			document.removeEventListener('mousemove', mouseMoveListener);
 		};
 	}, []);
 
