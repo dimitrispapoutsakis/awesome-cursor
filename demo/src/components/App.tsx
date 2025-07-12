@@ -27,6 +27,20 @@ const App = () => {
 				iosPointerAnchorEl="button"
 				follow
 				theme="dark"
+				gestures={{
+					scrollToTop: {
+						// active: true,
+						onScrollEnd: () => {
+							console.log('scroll top end');
+						},
+					},
+					scrollToBottom: {
+						// active: true,
+						onScrollEnd: () => {
+							console.log('scroll bottom end');
+						},
+					},
+				}}
 			/>
 
 			<Grid

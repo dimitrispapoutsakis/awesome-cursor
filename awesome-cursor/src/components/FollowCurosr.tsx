@@ -43,7 +43,6 @@ const FollowCursor = () => {
 				backgroundColor: isDarkTheme(theme as TTheme) ? darkBunker : whiteAlto,
 				color: isDarkTheme(theme as TTheme) ? 'white' : 'black',
 				borderRadius: '15px',
-				// fontSize: '11px',
 				padding: '5px 7px',
 				boxShadow: materialBoxShadowMd,
 			}}
