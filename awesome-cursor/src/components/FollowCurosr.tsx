@@ -34,6 +34,10 @@ const FollowCursor = () => {
 			},
 			{ passive: true },
 		);
+
+		return () => {
+			document.removeEventListener('mousemove', handleFollowCursor);
+		};
 	}, []);
 
 	return followPopupVisible ? (

@@ -54,7 +54,7 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 			<TextCursor />
 			<RenderCursor />
 			<IosPointerCursor />
-			{/* {follow && <FollowCursor />} */}
+			{follow && <FollowCursor />}
 		</GlobalProvider>
 	);
 };
