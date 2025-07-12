@@ -48,16 +48,18 @@ const IosPointerCursor = () => {
 
 			state.iosPointerActive = true;
 		} else {
-			const innerSpanEl = hoveringEl.querySelector('span');
-			if (innerSpanEl) {
-				innerSpanEl.style.transform = `translate3d(0, 0, 0)`;
-				innerSpanEl.style.pointerEvents = `auto`;
+			if (state.iosPointerActive) {
+				const innerSpanEl = hoveringEl.querySelector('span');
+				if (innerSpanEl) {
+					innerSpanEl.style.transform = `translate3d(0, 0, 0)`;
+					innerSpanEl.style.pointerEvents = `auto`;
+				}
+
+				(state.awesomeCursorEl as HTMLElement).style.mixBlendMode = 'normal';
+
+				setHoveringIosPointerStyle({});
+				state.iosPointerActive = false;
 			}
-
-			(state.awesomeCursorEl as HTMLElement).style.mixBlendMode = 'normal';
-
-			setHoveringIosPointerStyle({});
-			state.iosPointerActive = false;
 		}
 	}, []);
 
@@ -65,6 +67,10 @@ const IosPointerCursor = () => {
 		document.addEventListener('mousemove', handleIosPointer, {
 			passive: true,
 		});
+
+		return () => {
+			document.removeEventListener('mousemove', handleIosPointer);
+		};
 	}, []);
 
 	return null;
