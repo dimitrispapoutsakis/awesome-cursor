@@ -40,6 +40,10 @@ const RenderCursor = () => {
 			document.addEventListener('mouseover', handleRenderOnHover, {
 				passive: true,
 			});
+
+			return () => {
+				document.removeEventListener('mouseover', handleRenderOnHover);
+			};
 		}
 	}, []);
 
