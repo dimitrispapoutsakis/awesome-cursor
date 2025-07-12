@@ -4,9 +4,15 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { useGlobal } from './GlobalProvider';
 
 const TextCursor = () => {
-	const { color, setTextCursorStyle, setButtonCursorStyle, setIsTextCursor } =
-		useGlobal();
+	const {
+		color,
+		setTextCursorStyle,
+		setButtonCursorStyle,
+		setIsTextCursor,
+		isTextCursor,
+	} = useGlobal();
 	const domHelper = useMemo(() => new DomHelper(), []);
+
 	const handleTextCursor = useCallback(() => {
 		const { height: hoveringTextElHeight } = domHelper.getHoveringTextElInfo(
 			state.cursorX,
@@ -14,30 +20,44 @@ const TextCursor = () => {
 		);
 
 		if (hoveringTextElHeight) {
-			setTextCursorStyle({
-				width: '3.5px',
-				height: hoveringTextElHeight,
-				borderRadius: '15px',
-				backgroundColor: color,
-			});
-			setButtonCursorStyle({});
+			if (!isTextCursor) {
+				setIsTextCursor(true);
+				setTextCursorStyle({
+					width: '3.5px',
+					height: hoveringTextElHeight,
+					borderRadius: '15px',
+					backgroundColor: color,
+				});
+				setButtonCursorStyle({});
+			}
 		} else {
-			setIsTextCursor(false);
-			setTextCursorStyle({});
+			if (isTextCursor) {
+				setIsTextCursor(false);
+				setTextCursorStyle({});
+			}
 		}
-	}, []);
+	}, [
+		isTextCursor,
+		color,
+		setIsTextCursor,
+		setTextCursorStyle,
+		setButtonCursorStyle,
+	]);
+
+	const handleMouseMove = useCallback(() => {
+		if (!state.iosPointerActive) {
+			handleTextCursor();
+		}
+	}, [handleTextCursor]);
 
 	useEffect(() => {
-		document.addEventListener(
-			'mousemove',
-			() => {
-				if (!state.iosPointerActive) {
-					handleTextCursor();
-				}
-			},
-			{ passive: true },
-		);
-	}, []);
+		document.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+		// Cleanup: remove the listener when component unmounts or handleMouseMove changes
+		return () => {
+			document.removeEventListener('mousemove', handleMouseMove);
+		};
+	}, [handleMouseMove]);
 
 	return null;
 };

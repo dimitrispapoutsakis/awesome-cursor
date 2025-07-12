@@ -25,6 +25,7 @@ interface IUseGlobal {
 	iosPointerAnchorEl?: string;
 	setTextCursorStyle: (style: CSSProperties) => void;
 	setButtonCursorStyle: (style: CSSProperties) => void;
+	isTextCursor?: boolean;
 	setIsTextCursor: (isTextCursor: boolean) => void;
 	setRenderButtonCursor: (renderButtonCursor: boolean) => void;
 	hoveringIosPointerStyle?: CSSProperties;
@@ -75,6 +76,7 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 	const [awesomeCursorEl, setAwesomeCursorEl] = useState<HTMLElement | null>(
 		null,
 	);
+	console.log('rendering');
 	const [appliedColor, setAppliedColor] = useState('');
 	const [hasClicked, setHasClicked] = useState(false);
 	const [awesomeCursorInnerEl, setAwesomeCursorInnerEl] =
@@ -112,6 +114,7 @@ export const GlobalProvider = ({ children, ...props }: IGlobalProvider) => {
 		iosPointerAnchorEl,
 		setTextCursorStyle,
 		setButtonCursorStyle,
+		isTextCursor,
 		setIsTextCursor,
 		hoveringIosPointerStyle,
 		textCursorStyle,

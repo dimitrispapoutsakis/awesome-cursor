@@ -52,9 +52,9 @@ const AwesomeCursor = (props: IAwesomeCursor) => {
 			<CursorAnimator />
 			<DynamicColor />
 			<TextCursor />
-			<RenderCursor />
+			{/* <RenderCursor />
 			<IosPointerCursor />
-			{follow && <FollowCursor />}
+			{follow && <FollowCursor />} */}
 		</GlobalProvider>
 	);
 };
